@@ -151,6 +151,61 @@ public class Game {
     public String checkGameWinner(char [][]grid){
         String result = "None";
         //Student code goes here ...
+        int emptyPosition = 0,row,column;
+        int gridLength = grid.length;
+
+
+        if(grid[0][0] == grid[0][1] && grid[0][0] == grid[0][2] && grid[0][0] != '-')
+        {
+            result = Character.toUpperCase(grid[0][0]) + " wins";
+        }
+        else if(grid[0][0] == grid[1][0] && grid[0][0] == grid[2][0] && grid[0][0] != '-')
+        {
+            result = Character.toUpperCase(grid[0][0]) + " wins";
+        }
+
+        else if(grid[1][0] == grid[1][1] && grid[1][0] == grid[1][2] && grid[1][0] != '-')
+        {
+            result = Character.toUpperCase(grid[1][0]) + " wins";
+        }
+        else if(grid[0][1] == grid[1][1] && grid[0][1] == grid[2][1] && grid[0][1] != '-')
+        {
+            result = Character.toUpperCase(grid[0][1]) + " wins";
+        }
+        else if(grid[2][0] == grid[2][1] && grid[2][0] == grid[2][2] && grid[2][0] != '-')
+        {
+            result = Character.toUpperCase(grid[2][0]) + " wins";
+        }
+        else if(grid[0][2] == grid[1][2] && grid[0][2] == grid[2][2] && grid[0][2] != '-')
+        {
+            result = Character.toUpperCase(grid[0][2]) + " wins";
+        }
+        else if(grid[0][0] == grid[1][1] && grid[0][0] == grid[2][2] && grid[0][0] != '-')
+        {
+            result = Character.toUpperCase(grid[0][0]) + " wins";
+        }
+        else if(grid[0][2] == grid[1][1] && grid[0][2] == grid[2][0] && grid[0][2] != '-')
+        {
+            result = Character.toUpperCase(grid[0][2]) + " wins";
+        }
+        else
+        {
+            for(row = 0; row < gridLength; row++)
+            {
+                for(column = 0; column < gridLength; column++)
+                {
+                    if(grid[row][column] != '-' )
+                    {
+                        emptyPosition = emptyPosition + 1;
+                    }
+                }
+            }
+
+            if(emptyPosition == gridLength * gridLength)
+            {
+                result = "Tie";
+            }
+        }
         return result;
     }
 
